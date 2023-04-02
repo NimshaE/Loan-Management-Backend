@@ -11,6 +11,11 @@ import java.util.Date;
 
 @NamedQuery(name = "User.findbyEmailId",query = "select u from User u where u.email=:email")
 
+@NamedQuery(name = "User.getAllUser",query = "select new com.inn.loan.wrapper.UserWrapper(u.fullname,u.dob,u.email,u.insPlan,u.status) from User u where u.role='user'")
+
+@NamedQuery(name = "User.updateStatus", query = "update User u set u.status=:status where u.fullname=:fullname")
+
+@NamedQuery(name = "User.getAllAdmin",query = "select u.email from User u where u.role='admin'")
 
 @Data
 @Entity
