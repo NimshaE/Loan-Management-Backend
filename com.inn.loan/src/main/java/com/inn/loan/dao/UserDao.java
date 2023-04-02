@@ -16,6 +16,7 @@ public interface UserDao extends JpaRepository<User,String> {
     @Transactional
     @Modifying
     Integer updateStatus(@Param("status") String status,@Param("fullname") String fullname);
+    User findByEmail(String email);
 
 
 }

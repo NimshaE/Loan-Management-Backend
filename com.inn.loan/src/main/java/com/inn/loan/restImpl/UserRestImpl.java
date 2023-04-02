@@ -1,5 +1,6 @@
 package com.inn.loan.restImpl;
 
+import com.google.common.base.Strings;
 import com.inn.loan.POJO.User;
 import com.inn.loan.constents.LoanConstent;
 import com.inn.loan.rest.UserRest;
@@ -11,10 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 @RestController
 public class UserRestImpl implements UserRest {
@@ -60,6 +58,39 @@ public class UserRestImpl implements UserRest {
             return userService.update(requestMap);
         }
         catch (Exception ex){
+            ex.printStackTrace();
+        }
+        return LoanUtils.getResponseEntity(LoanConstent.SOMETHING_WENT_WRONG,HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @Override
+    public ResponseEntity<String> checkToken() {
+        try{
+            return userService.checkToken();
+        }
+        catch (Exception ex){
+            ex.printStackTrace();
+        }
+        return LoanUtils.getResponseEntity(LoanConstent.SOMETHING_WENT_WRONG,HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @Override
+    public ResponseEntity<String> changePassword(Map<String, String> requestMap) {
+        try{
+            return userService.changePassword(requestMap);
+        }
+        catch (Exception ex)
+        {
+            ex.printStackTrace();
+        }
+        return LoanUtils.getResponseEntity(LoanConstent.SOMETHING_WENT_WRONG,HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @Override
+    public ResponseEntity<String> forgotPassword(Map<String, String> requestMap) {
+        try{
+            return userService.forgotPassword(requestMap);
+        }catch (Exception ex){
             ex.printStackTrace();
         }
         return LoanUtils.getResponseEntity(LoanConstent.SOMETHING_WENT_WRONG,HttpStatus.INTERNAL_SERVER_ERROR);
