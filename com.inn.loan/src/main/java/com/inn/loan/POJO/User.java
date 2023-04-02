@@ -8,6 +8,10 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
+
+@NamedQuery(name = "User.findbyEmailId",query = "select u from User u where u.email=:email")
+
+
 @Data
 @Entity
 @DynamicInsert
@@ -23,7 +27,7 @@ public class User implements Serializable {
     private String fullname;
 
     @Column(name = "dob")
-    private Date dob;
+    private String  dob;
 
     @Column(name = "email")
     private String email;
@@ -36,5 +40,8 @@ public class User implements Serializable {
 
     @Column(name = "password")
     private String password;
+
+    @Column(name = "status")
+    private String status;
 
 }
