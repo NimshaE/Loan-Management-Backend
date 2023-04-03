@@ -8,6 +8,9 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @NamedQuery(name = "Product.getAllProducts",query="select new com.inn.loan.wrapper.ProductWrapper(p.id,p.name,p.category,p.brand,p.price,p.status,p.seller.id,p.seller.name) from Product p")
+
+@NamedQuery(name = "Product.updateProductStatus", query = "update Product p set p.status=:status where p.id=: id")
+
 @Data
 @Entity
 @DynamicInsert
