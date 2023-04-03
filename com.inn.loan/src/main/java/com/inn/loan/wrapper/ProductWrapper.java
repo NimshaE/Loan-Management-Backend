@@ -29,4 +29,15 @@ public class ProductWrapper {
         this.sellerId = sellerId;
         this.sellerName = sellerName;
     }
+    public ProductWrapper(Integer id,String name){
+        this.id=id;
+        this.name=name;
+    }
+    public ProductWrapper(Integer id,String name,String category, String brand, Integer price){
+        this.id = id;
+        this.name = name;
+        this.category = category;
+        this.brand = brand;
+        this.price = price;
+    }
 }

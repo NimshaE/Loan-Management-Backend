@@ -14,4 +14,8 @@ public interface ProductDao extends JpaRepository<Product, Integer> {
    @Modifying
    @Transactional
    Integer updateProductStatus(@Param("status") String status, @Param("id") Integer id);
+
+    List<ProductWrapper> getProductBySeller(@Param("id") Integer id);
+
+    ProductWrapper getProductById(@Param("id") Integer id);
 }
